@@ -1,12 +1,5 @@
 all: compile jar
 
-check_jdk:
-	@if [ -nx "which javac" ]; then
-		echo "You need jdk 1.8"
-		exit 1
-	fi
-	if [ "`javac -version`" ]
-
 compile:
 	javac code/*.java
 
