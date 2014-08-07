@@ -15,7 +15,7 @@ public class MainGameState extends GameState {
   private int points;
   private boolean gameOver = false;
   private boolean passedHundred = false;
-  private BufferedImage bg = ImageLoader.loadImage("res\\img\\bg.png");
+  private BufferedImage bg = ImageLoader.loadImage("res/img/bg.png");
   
   private List<Pipe> pipes = new ArrayList<>();
   private List<Pipe> pipesToRemove = new ArrayList<>();  

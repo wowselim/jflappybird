@@ -9,7 +9,7 @@ public class Bird implements Entity {
   public double x, y, width, height, dy;
   private boolean falling = true, flapping = false;
   private double fallSpeed, flapSpeed, maxFallSpeed, currentFallSpeed, currentFlap;
-  private BufferedImage sprite = ImageLoader.loadImage("res\\img\\bird.png");
+  private BufferedImage sprite = ImageLoader.loadImage("res/img/bird.png");
   
   public Bird() {
     width = 30;
