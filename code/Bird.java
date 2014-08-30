@@ -6,9 +6,9 @@ import java.awt.Rectangle;
 import java.util.Objects;
 
 public class Bird implements Entity {
-  public double x, y, width, height, dy;
-  private boolean falling = true, flapping = false;
-  private double fallSpeed, flapSpeed, maxFallSpeed, currentFallSpeed, currentFlap;
+  public double x, y, width, height;
+  private boolean falling = true;
+  private double fallSpeed, maxFallSpeed, currentFallSpeed;
   private BufferedImage sprite = ImageLoader.loadImage("res/img/bird.png");
   
   public Bird() {
@@ -16,7 +16,6 @@ public class Bird implements Entity {
     height = 20;
     fallSpeed = 0.1D;
     maxFallSpeed = 10D;
-    flapSpeed = -15D;
   }
   
   public void update() {
@@ -25,24 +24,12 @@ public class Bird implements Entity {
       y = -30;
     }
     
-    if(flapping) {
-      currentFlap += flapSpeed;
-            
-      if(currentFlap < -40) {
-        currentFlap = 0;
-        currentFallSpeed = 0;
-        setFalling();
-        flapping = false;
-      }
-      y += currentFlap;
+    currentFallSpeed += fallSpeed;
+    if(currentFallSpeed > maxFallSpeed) {
+      currentFallSpeed = maxFallSpeed;
     }
-    if(falling) {
-      currentFallSpeed += fallSpeed;
-      if(currentFallSpeed > maxFallSpeed) {
-        currentFallSpeed = maxFallSpeed;
-      }
-      y += currentFallSpeed;
-    }               
+    y += currentFallSpeed;
+    
   }
   
   public void render(Graphics2D g) {
@@ -83,7 +70,7 @@ public class Bird implements Entity {
   }
   
   public void setFlapping() {
-    flapping = true;          
+    currentFallSpeed -= 2.5D;         
   }
   
   public int getY() {
