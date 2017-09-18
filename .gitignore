@@ -1,2 +1,10 @@
 *.class
-*.swp
+*.jar
+*.iml
+*.ipr
+*.iws
+
+out/
+build/
+.gradle/
+

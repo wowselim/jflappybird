@@ -1,3 +1,7 @@
+package co.selim.jflappybird;
+
+import co.selim.jflappybird.gamestates.GameStateManager;
+
 import java.awt.Graphics2D;
 
 public abstract class GameState {

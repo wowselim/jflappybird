@@ -1,19 +1,20 @@
+package co.selim.jflappybird.entities;
+
+import co.selim.jflappybird.GameConstants;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Pipe implements Entity {
-  public int x, y;
-  public boolean top, passedBird;
-  public int width = 25;
-  public int height = 20;
+  private int x;
+  private boolean passedBird;
+  private int width = 25;
   private int upperEdge;
   private int gap = 50;
   
   public Pipe(int upperEdge) {
-    x = GamePanel.WIDTH;
+    x = GameConstants.WIDTH;
     this.upperEdge = upperEdge;
   }
   
@@ -25,21 +26,22 @@ public class Pipe implements Entity {
     if (notOnScreen()) {
       return;
     }
-    g.setColor(new Color(0x38cf3a));
+    g.setColor(new Color(0x1DBC3A));
     g.fillRect(x - 2, upperEdge - 35, width + 4, 5);
-    g.fillRect(x, -30, width, GamePanel.HEIGHT - (GamePanel.HEIGHT - upperEdge));
     g.fillRect(x - 2, upperEdge + gap - 5, width + 4, 5);
-    g.fillRect(x, upperEdge + gap, width, GamePanel.HEIGHT);
+
+    g.fillRect(x, -30, width, GameConstants.HEIGHT - (GameConstants.HEIGHT - upperEdge));
+    g.fillRect(x, upperEdge + gap, width, GameConstants.HEIGHT);
   }
   
   public boolean collides(Entity other) {
     return x < -30;
   }
   
-  public Rectangle getHitbox()[] {
+  public Rectangle getHitboxes()[] {
     Rectangle[] bounds = new Rectangle[2];
-    bounds[0] = new Rectangle(x, -30, width, GamePanel.HEIGHT - (GamePanel.HEIGHT - upperEdge));
-    bounds[1] = new Rectangle(x, upperEdge + gap, width, GamePanel.HEIGHT);
+    bounds[0] = new Rectangle(x, -30, width, GameConstants.HEIGHT - (GameConstants.HEIGHT - upperEdge));
+    bounds[1] = new Rectangle(x, upperEdge + gap, width, GameConstants.HEIGHT);
     return bounds;
   }
   
@@ -53,5 +55,9 @@ public class Pipe implements Entity {
   
   public void setPassed() {
     passedBird = true;
+  }
+
+  public int getX() {
+    return x;
   }
 }

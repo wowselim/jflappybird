@@ -1,15 +1,11 @@
 jflappybird
 ===========
 
-a flappybird clone terribly rewritten in java swing
+an ugly flappybird clone written in java
 
 ## Requirement
 
 - JDK 1.8
-
-## Compile
-
-make
 
 ## License
 
